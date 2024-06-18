@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.9b499d74.css",
+    "main.js": "/portfolio/static/js/main.119d7c24.js",
+    "static/media/azure (1).png": "/portfolio/static/media/azure (1).236608a79be93535011a.png",
+    "static/media/reactjs.png": "/portfolio/static/media/reactjs.a3f654cf112964e75764.png",
+    "static/media/Work.jpg": "/portfolio/static/media/Work.a92c41b851977e4abd99.jpg",
+    "static/media/RealState.jpg": "/portfolio/static/media/RealState.5b66fb9d7c1438fddb72.jpg",
+    "static/media/html.png": "/portfolio/static/media/html.8e0490a6c670229bad07.png",
+    "static/media/nameLogo.png": "/portfolio/static/media/nameLogo.6f98610817e336ddcc5c.png",
+    "static/media/nodejs.png": "/portfolio/static/media/nodejs.4eeda04c519537c341d4.png",
+    "static/media/javascript.png": "/portfolio/static/media/javascript.09f4b694bf4603eee70d.png",
+    "static/media/css.png": "/portfolio/static/media/css.f27fa250bced0784b111.png",
+    "static/media/mongodb.png": "/portfolio/static/media/mongodb.b6c0b31b5b761f8460d6.png",
+    "static/media/tailwindcss.png": "/portfolio/static/media/tailwindcss.f2e1db1c46c10d884e4c.png",
+    "index.html": "/portfolio/index.html",
+    "main.9b499d74.css.map": "/portfolio/static/css/main.9b499d74.css.map",
+    "main.119d7c24.js.map": "/portfolio/static/js/main.119d7c24.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9b499d74.css",
+    "static/js/main.119d7c24.js"
+  ]
+}
