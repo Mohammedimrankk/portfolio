@@ -1,18 +1,30 @@
-import Navbar from './components/Navbar'
-import Home from './components/Home'
-import About from './components/About'
-import Skills from './components/Skills'
-import Work from './components/Work'
-import Contact from './components/Contact'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import About from './components/About';
+import Skills from './components/Skills';
+import Contact from './components/Contact';
+import Calculator from './components/Calculator';
+
 function App() {
   return (
     <div>
       <Navbar />
-      <Home />
-      <About/>
-      <Skills/>
-      <Work />
-      <Contact/>
+      <section id="home">
+        <Home />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="calculator">
+        <Calculator />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
     </div>
   );
 }
