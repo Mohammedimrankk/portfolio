@@ -14,6 +14,11 @@ const Calculator = () => {
       return;
     }
 
+    // Prevent leading zeroes and incorrect decimal usage
+    if ((input === '0' && value === '0') || (input === '.' && value.slice(-1) === '.')) {
+      return;
+    }
+
     // Update the state with the new value
     setValue(value + input);
   };
@@ -24,9 +29,11 @@ const Calculator = () => {
 
   const evaluateExpression = () => {
     try {
+      // Replace 'x' with '*' for multiplication
+      const sanitizedValue = value.replace(/x/g, '*');
       // Basic parser to evaluate the expression safely
       // eslint-disable-next-line no-new-func
-      const result = new Function('return ' + value)();
+      const result = new Function('return ' + sanitizedValue)();
       setValue(result.toString());
     } catch (error) {
       setValue("Error");
@@ -52,7 +59,7 @@ const Calculator = () => {
             <input type="button" value="7" onClick={handleClick} className="p-3 bg-gray-300 rounded-lg" />
             <input type="button" value="8" onClick={handleClick} className="p-3 bg-gray-300 rounded-lg" />
             <input type="button" value="9" onClick={handleClick} className="p-3 bg-gray-300 rounded-lg" />
-            <input type="button" value="*" onClick={handleClick} className="p-3 bg-gray-500 text-white rounded-lg" />
+            <input type="button" value="x" onClick={handleClick} className="p-3 bg-gray-500 text-white rounded-lg"/>
             <input type="button" value="4" onClick={handleClick} className="p-3 bg-gray-300 rounded-lg" />
             <input type="button" value="5" onClick={handleClick} className="p-3 bg-gray-300 rounded-lg" />
             <input type="button" value="6" onClick={handleClick} className="p-3 bg-gray-300 rounded-lg" />

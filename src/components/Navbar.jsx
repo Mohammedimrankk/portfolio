@@ -10,7 +10,11 @@ const Navbar = () => {
   const [worksSubmenu, setWorksSubmenu] = useState(false);
 
   const handleClick = () => setNav(!nav);
-  const closeMenu = () => setNav(false);
+  const closeMenu = () => {
+    setNav(false);
+    setWorksSubmenu(false); // Ensure submenu closes when menu closes
+  };
+
   const toggleWorksSubmenu = () => setWorksSubmenu(!worksSubmenu);
 
   return (
@@ -43,8 +47,13 @@ const Navbar = () => {
           {worksSubmenu && (
             <ul className='absolute top-full left-0 bg-[#0a192f] text-gray-300'>
               <li>
-                <Link to="calculator" smooth={true} duration={500} onClick={closeMenu} className="underline">
+                <Link to="calculator" smooth={true} duration={500} onClick={() => setWorksSubmenu(false)} className="underline">
                   Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="quotes" smooth={true} duration={500} onClick={() => setWorksSubmenu(false)} className="underline">
+                  Quotes
                 </Link>
               </li>
             </ul>
@@ -80,9 +89,23 @@ const Navbar = () => {
           </Link>
         </li>
         <li className='py-6 text-4xl'>
-          <Link to="works" smooth={true} duration={500} onClick={closeMenu} className="underline">
-            Works
-          </Link>
+          <button onClick={toggleWorksSubmenu} className="underline">
+            Mini Projects
+          </button>
+          {worksSubmenu && (
+            <ul className='bg-[#0a192f] text-gray-300'>
+              <li className='py-6 text-4xl'>
+                <Link to="calculator" smooth={true} duration={500} onClick={closeMenu} className="underline">
+                  Calculator
+                </Link>
+              </li>
+              <li className='py-6 text-4xl'>
+                <Link to="quotes" smooth={true} duration={500} onClick={closeMenu} className="underline">
+                  Quotes
+                </Link>
+              </li>
+            </ul>
+          )}
         </li>
         <li className='py-6 text-4xl'>
           <Link to="contact" smooth={true} duration={500} onClick={closeMenu} className="underline">

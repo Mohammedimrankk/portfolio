@@ -5,7 +5,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Calculator from './components/Calculator';
-
+import Quotes from './components/Quotes'
 function App() {
   return (
     <div>
@@ -22,6 +22,10 @@ function App() {
       <section id="calculator">
         <Calculator />
       </section>
+      <section id="quotes">
+        <Quotes />
+      </section>
+
       <section id="contact">
         <Contact />
       </section>
