@@ -1,43 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohammed Imran | Flutter Mobile App Developer</title>
+<meta name="description" content="Mohammed Imran Abdul Rasheed, Flutter mobile app developer. Builder of ChatBizz, live on Google Play. AI-assisted development with Claude.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F6FA; --ink:#15213A; --muted:#5B6782; --line:#DCE2EC;
+  --blue:#2459D6; --teal:#0E8F74; --bubble-in:#FFFFFF; --bubble-out:#DCE8FF;
+  --head:"Sora",system-ui,sans-serif; --body:"Manrope",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:16px/1.65 var(--body)}
+a{color:var(--blue)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--head);line-height:1.2}
+h2{font-size:1.75rem;margin-bottom:28px}
+section{padding:72px 0;border-top:1px solid var(--line)}
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+nav .brand{font-family:var(--head);font-weight:700;text-decoration:none;color:var(--ink)}
+nav ul{display:flex;gap:22px;list-style:none}
+nav ul a{color:var(--muted);text-decoration:none;font-weight:500}
+nav ul a:hover{color:var(--ink)}
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:40px 0 80px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.02em}
+.hero .role{font-size:1.2rem;color:var(--muted);margin:14px 0 22px;max-width:34ch}
+.hero p.lead{max-width:52ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:600;text-decoration:none}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+/* phone */
+.phone{width:300px;margin:0 auto;background:var(--ink);border-radius:40px;padding:12px;box-shadow:0 30px 60px -25px rgba(21,33,58,.55)}
+.screen{background:#EAEFF7;border-radius:30px;overflow:hidden;min-height:520px;display:flex;flex-direction:column}
+.chat-top{background:var(--teal);color:#fff;padding:16px 18px 12px;display:flex;gap:10px;align-items:center}
+.avatar{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--teal);display:grid;place-items:center;font-family:var(--head);font-weight:700;font-size:.85rem}
+.chat-top b{display:block;font-size:.92rem}
+.chat-top small{opacity:.85;font-size:.75rem}
+.thread{padding:14px;display:flex;flex-direction:column;gap:8px;font-size:.86rem;line-height:1.4}
+.msg{max-width:82%;padding:8px 11px;border-radius:12px;opacity:0;animation:pop .35s ease forwards}
+.msg.in{background:var(--bubble-in);align-self:flex-start;border-top-left-radius:3px}
+.msg.out{background:var(--bubble-out);align-self:flex-end;border-top-right-radius:3px}
+.msg:nth-child(1){animation-delay:.3s}.msg:nth-child(2){animation-delay:1s}
+.msg:nth-child(3){animation-delay:1.8s}.msg:nth-child(4){animation-delay:2.6s}
+.msg:nth-child(5){animation-delay:3.4s}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.msg{animation:none;opacity:1}.btn:hover{transform:none}}
+
+/* apps */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px}
+.feature h3{font-size:1.5rem}
+.status{display:inline-block;font-size:.8rem;font-weight:600;padding:4px 10px;border-radius:999px;margin:10px 0 14px}
+.status.live{background:#DDF4EC;color:#0A6E58}
+.status.test{background:#FFF1D6;color:#8A5A00}
+.status.wip{background:#E4E9F7;color:var(--blue)}
+ul.points{padding-left:18px}
+ul.points li{margin-bottom:8px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.pair article{border-left:3px solid var(--teal);padding:4px 0 4px 20px}
+.pair h3{font-size:1.2rem}
+.ios{margin-top:28px;color:var(--muted)}
+
+/* process */
+ol.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding-top:40px}
+ol.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--head);font-size:.9rem}
+ol.steps b{display:block;font-family:var(--head);margin-bottom:4px}
+ol.steps p{color:var(--muted);font-size:.95rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 36px}
+.skills h3{font-size:1rem;margin-bottom:6px}
+.skills p{color:var(--muted);font-size:.95rem}
+
+/* timeline */
+.timeline{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.timeline h3{font-size:1.1rem;margin-bottom:16px}
+.item{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.item time{color:var(--muted);font-size:.9rem}
+.item b{display:block}
+.item span{color:var(--muted);font-size:.93rem}
+
+/* contact */
+.contact{text-align:left}
+.contact p{max-width:52ch;margin-bottom:24px}
+footer{padding:28px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+@media (max-width:860px){
+  .hero,.feature,.pair,.timeline{grid-template-columns:1fr}
+  ol.steps,.skills{grid-template-columns:1fr 1fr}
+  nav ul{display:none}
+  .feature{padding:24px}
+}
+@media (max-width:520px){ol.steps,.skills{grid-template-columns:1fr}.phone{width:270px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#top">Mohammed Imran</a>
+    <ul>
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#process">How I work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>Mohammed Imran Abdul Rasheed</h1>
+      <p class="role">Flutter mobile app developer building with AI-assisted development</p>
+      <p class="lead">I design, build and ship mobile apps using Claude and coding agents, then review and test every change before release. My app ChatBizz is live on Google Play, and its Delivery and Seller apps are in closed testing. I'm now preparing them for the Apple App Store.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.chatbizz.app" target="_blank" rel="noopener">See ChatBizz on Google Play</a>
+        <a class="btn ghost" href="mailto:mohammedimrankk@gmail.com">Email me</a>
+      </div>
+    </div>
+    <div class="phone" aria-label="Example chat in a phone screen">
+      <div class="screen">
+        <div class="chat-top"><div class="avatar">MI</div><div><b>Mohammed Imran</b><small>online, open to remote roles</small></div></div>
+        <div class="thread">
+          <div class="msg in">Hi! What do you build?</div>
+          <div class="msg out">Flutter apps for Android and iOS. ChatBizz is live on Google Play.</div>
+          <div class="msg in">What's inside it?</div>
+          <div class="msg out">Real-time chat, group admin, video calls, snaps, and a marketplace with Cashfree payments.</div>
+          <div class="msg out">Built AI-first with Claude, reviewed line by line.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section id="apps">
+  <div class="wrap">
+    <h2>Apps I've built</h2>
+    <article class="feature">
+      <div>
+        <h3>ChatBizz</h3>
+        <span class="status live">Live on Google Play</span>
+        <p>A Flutter app that combines WhatsApp-style messaging with Instagram-style social and marketplace features, so people can chat with shops and buy from them in one place.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.chatbizz.app" target="_blank" rel="noopener">Open in Play Store</a>
+          <a class="btn ghost" href="https://chatbizz.shop" target="_blank" rel="noopener">chatbizz.shop</a>
+        </div>
+      </div>
+      <ul class="points">
+        <li>1:1 and group chat with admin roles, system messages, last-seen presence and grouped notifications</li>
+        <li>One media pipeline for images, PDFs and videos with instant bubbles, upload progress and link previews</li>
+        <li>Snapchat-style snaps using pre-signed URLs, CDN caching and per-snap encryption</li>
+        <li>WebRTC voice and video calls with picture-in-picture</li>
+        <li>Cashfree Payment Gateway and Easy Split for automatic platform and vendor settlements</li>
+      </ul>
+    </article>
+
+    <div class="pair">
+      <article>
+        <h3>Delivery App</h3>
+        <span class="status test">Play Store closed testing</span>
+        <p>A delivery partner app that handles delivery for every shop and seller on ChatBizz, from pickup to doorstep. Partners withdraw earnings to UPI through Cashfree Payouts, with UPI validation and payout-status webhooks.</p>
+      </article>
+      <article>
+        <h3>Seller App</h3>
+        <span class="status test">Play Store closed testing</span>
+        <p>A dashboard for shop owners to manage products and track stock quantity records, connected to the ChatBizz backend and Easy Split vendor settlements.</p>
+      </article>
+    </div>
+    <p class="ios"><span class="status wip">In progress</span> Preparing the ChatBizz apps for release on the Apple App Store.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>How I work with AI</h2>
+    <ol class="steps">
+      <li><b>Research</b><p>Study how leading apps solve the feature and what can go wrong, including security.</p></li>
+      <li><b>Write the spec</b><p>Turn it into a detailed prompt for Claude with edge cases, UI rules and acceptance criteria.</p></li>
+      <li><b>Build with Claude</b><p>Generate the code with Claude and Claude Code inside the existing app structure.</p></li>
+      <li><b>Review and ship</b><p>Check every change for bugs, security and UX, test on real devices, then release.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Mobile</h3><p>Flutter, Dart, Android, iOS, Google Play Console, App Store Connect, TestFlight, FCM push notifications, deep linking</p></div>
+      <div><h3>AI development</h3><p>Claude, Claude Code, Cursor, Gemini API, spec writing for coding agents, reviewing and testing AI code</p></div>
+      <div><h3>App features</h3><p>Real-time chat, WebRTC calls, picture-in-picture, media uploads, maps and location, dashboards</p></div>
+      <div><h3>Backend and web</h3><p>Node.js, Java, Spring Boot, REST APIs, WebSockets, React, TypeScript, JavaScript</p></div>
+      <div><h3>Payments and cloud</h3><p>Cashfree Payment Gateway, Easy Split, Payouts (UPI), webhooks, Azure, GCP, CDN</p></div>
+      <div><h3>Practices</h3><p>Security hardening, light and dark themes, UI polish, performance tuning, Git, competitive programming</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap timeline">
+    <div>
+      <h3>Experience</h3>
+      <div class="item"><time>2024 – now</time><div><b>Independent Mobile App Developer</b><span>ChatBizz, self-owned product</span></div></div>
+      <div class="item"><time>2025 – 2026</time><div><b>Instructor</b><span>Excel Academy, Bhagyanagar</span></div></div>
+      <div class="item"><time>2022 – 2024</time><div><b>Instructor</b><span>Saami Academy, Bhagyanagar, Nanded</span></div></div>
+      <div class="item"><time>2018 – 2020</time><div><b>Lecturer</b><span>V.K. Senior College, Degloor Naka</span></div></div>
+    </div>
+    <div>
+      <h3>Education</h3>
+      <div class="item"><time>2018</time><div><b>M.E., Structural Engineering</b><span>Shreeyash College of Engineering &amp; Technology, Dr. BAMU. First class with distinction</span></div></div>
+      <div class="item"><time>2015</time><div><b>B.E., Civil Engineering</b><span>College of Engineering &amp; Technology, Aurangabad. First class with distinction</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <h2>Let's work together</h2>
+    <p>I'm looking for remote Flutter and mobile app developer roles. Nanded, Maharashtra, India.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:mohammedimrankk@gmail.com">mohammedimrankk@gmail.com</a>
+      <a class="btn ghost" href="tel:+917972080620">+91 7972080620</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/mohammed-imran-abdul-rasheed-206620107/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/Mohammedimrankk" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 Mohammed Imran Abdul Rasheed</div></footer>
+</body>
 </html>
